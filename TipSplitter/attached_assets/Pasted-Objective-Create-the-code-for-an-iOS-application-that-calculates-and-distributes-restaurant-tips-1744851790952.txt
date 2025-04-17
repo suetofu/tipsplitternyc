@@ -1,0 +1,116 @@
+Objective:
+
+Create the code for an iOS application that calculates and distributes restaurant tips among staff after each shift, based on hours worked and position-based point values.
+
+1. Initial App Setup (First Launch Only)
+
+
+Upon installation, prompt the user to configure:
+
+Restaurant Name
+
+Shift Types (e.g., Lunch, Brunch, Dinner, or custom)
+
+Positions and Default Point Values
+
+Example: Server = 1.0, Bartender = 1.0, Busser = 0.5, etc.
+
+These defaults must be editable later and override-able per shift
+
+Upload Employee Database:
+
+First & Last Name
+
+Employee ID
+
+Position(s) they can hold (only one will be assigned per shift)
+
+2. Per-Shift Entry Workflow
+
+
+Each shift requires the following inputs:
+
+
+
+A. 
+Shift Details
+Date and Type (e.g., “Dinner – April 13, 2024”)
+
+Tip Amounts:
+
+Credit Card Tips
+
+House Tips
+
+Cash Tips
+
+
+
+Important Tip Distribution Rule:
+All three tip types (credit card, house, and cash) are distributed proportionally based on the employee’s earned shift points.
+Credit Card Tips + House Tips are grouped together as “digital tips” in the UI/output.
+Cash Tips are displayed separately.
+Cash is not included in the digital tips total.
+B. 
+Employee Selection
+
+
+For each shift:
+
+Select participating employees from the stored list.
+
+For each:
+
+Clock-in and Clock-out times
+
+Hours are calculated as decimals (e.g., 7.75 hours)
+
+Rounding behavior (15/30/45/60 min) is configurable by the user
+
+Position worked during the shift (only one per employee)
+
+Position Point Value (default from setup, but editable per shift)
+
+3. Tip Calculation Logic
+Hours Worked = Clock-out – Clock-in (as decimal)
+
+Shift Points per Employee = Hours Worked × Position Point Value
+
+Total Points for Shift = Sum of all employee points
+
+For Each Employee:
+
+Digital Tip Share = (Employee Points / Total Points) × (Credit Card + House Tips)
+
+Cash Tip Share = (Employee Points / Total Points) × Cash Tips
+
+4. Output Summary
+
+
+For each employee, display:
+
+Name
+
+Employee ID
+
+Position
+
+Hours Worked
+
+Points Earned
+
+Digital Tips (Credit Card + House)
+
+Cash Tips
+
+
+
+Validate that:
+Total of all Digital Tips matches original Credit Card + House input
+Total of all Cash Tips matches original Cash input
+5. CSV Export
+
+
+Allow export of each shift summary as a CSV file, containing all the data above.
+
+6. Example

@@ -1,0 +1,135 @@
+Objective:
+
+Create the code for an iOS application that calculates and distributes restaurant tips among staff after each shift, based on hours worked and position-based point values.
+
+1. Initial App Setup (First Launch Only)
+
+
+Upon installation, prompt the user to configure:
+
+Restaurant Name
+
+Shift Types (e.g., Lunch, Brunch, Dinner, or custom)
+
+Positions and Default Point Values
+
+Example: Server = 1.0, Bartender = 1.0, Busser = 0.5, etc.
+
+These defaults must be editable later and override-able per shift
+
+Upload Employee Database:
+
+First & Last Name
+
+Employee ID
+
+Position(s) they can hold (only one will be assigned per shift)
+
+2. Per-Shift Entry Workflow
+
+
+Each shift requires the following inputs:
+
+
+
+A. 
+Shift Details
+Date and Type (e.g., “Dinner – April 13, 2024”)
+
+Tip Amounts:
+
+Credit Card Tips
+
+House Tips
+
+Cash Tips
+
+
+
+Important Tip Distribution Rule:
+All three tip types (credit card, house, and cash) are distributed proportionally based on the employee’s earned shift points.
+Credit Card Tips + House Tips are grouped together as “digital tips” in the UI/output.
+Cash Tips are displayed separately.
+Cash is not included in the digital tips total.
+B. 
+Employee Selection
+
+
+For each shift:
+
+Select participating employees from the stored list.
+
+For each:
+
+Clock-in and Clock-out times
+
+Hours are calculated as decimals (e.g., 7.75 hours)
+
+Rounding behavior (15/30/45/60 min) is configurable by the user
+
+Position worked during the shift (only one per employee)
+
+Position Point Value (default from setup, but editable per shift)
+
+3. Tip Calculation Logic
+Hours Worked = Clock-out – Clock-in (as decimal)
+
+Shift Points per Employee = Hours Worked × Position Point Value
+
+Total Points for Shift = Sum of all employee points
+
+For Each Employee:
+
+Digital Tip Share = (Employee Points / Total Points) × (Credit Card + House Tips)
+
+Cash Tip Share = (Employee Points / Total Points) × Cash Tips
+
+4. Output Summary
+
+
+For each employee, display:
+
+Name
+
+Employee ID
+
+Position
+
+Hours Worked
+
+Points Earned
+
+Digital Tips (Credit Card + House)
+
+Cash Tips
+
+
+
+Validate that:
+Total of all Digital Tips matches original Credit Card + House input
+Total of all Cash Tips matches original Cash input
+5. CSV Export
+
+
+Allow export of each shift summary as a CSV file, containing all the data above.
+
+6. Example
+A clear example is the following:
+
+Saturday, April 13, 2024 / dinner shift. Where $168 USD in cash tips, $3066.22 in credit card tips, and $57 in house tips were generated. Employees. Johny M. with employee number 3, position Bartender (1 point) generated $26.73 in cash tips and $482.08 in credit card tips. Worked from 3:00 pm to 11:30 pm worked 8.5 points.
+
+Harold Z. with employee number 15, position server (1 point) generated $19.65 in cash tips and $354.47 in credit card tips. Worked 6.25 points.
+
+Andrew P. with employee number 30, position server (1 point) generated $22.01 in cash tips and $397.01 in credit card tips. Worked 7 points. Started his shift at 4:00 pm and finished at 11:00 pm.
+
+Drake S. with employee number 21, position server (1 point) generated $22.01 in cash tips and $397.01 in credit card tips. Worked 7 points. Started his shift at 4:00 pm and finished at 11:00 pm.
+
+Nick A. with employee number 4, position server (1 point) generated $18.87 in cash tips and $340.29 in credit card tips. Worked 6 points. Clocked in at 5:00 pm and finished at 11:00 pm.
+
+Diana M. With employee number 36, position expo (.75 point) generated $17.10 in cash tips and $308.53 in credit card tips. Worked 5.44 points. Clocked in at 4:00 pm and clocked out at 11:15 pm.
+
+Fred P. With employee number 16, position runner (.65 point) generated $14.81 in cash tips and $267.13 in credit card tips. Worked 4.71 points. Clocked in at 4:00 pm and clocked out at 11:15 pm.
+
+Deblyn N. With employee number 29, position busser (.55 point) generated $14.72 in cash tips and $265.43 in credit card tips. Worked 4.68 points. Clocked in at 3:00 pm and clocked out at 11:30 pm.
+
+Louis C. With employee number 5, position busser (.55 point) generated $12.11 in cash tips and $218.35 in credit card tips. Worked 3.85 points. Clocked in at 4:00 pm and clocked out at 11:00 pm. End of example.
